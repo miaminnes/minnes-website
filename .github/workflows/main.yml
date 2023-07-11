@@ -1,0 +1,30 @@
+name: Deploy to login.eng.ucsd.edu
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Copy to login.eng.ucsd.edu
+        env:
+          ID_SSH_KEY: ${{ secrets.ID_RSA }}
+          KNOWN_HOSTS: |
+            login.eng.ucsd.edu ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIOpZZPFDK40irLY6I8vHh4z1wsM+k5Bi6eREoC1bvV/Cwak+92N+xfWsgGi5C/sGeA1JDWpipSKbkfFiz94hePcLf6jxtxenL/I6Geb2UtVdQ7bz9fXMbjW0y+uKON6moUFEm8BDvXAxtfI1FGZbI2s6fRpPHunhl/Guw1Z4M1DIe0+WBkYdgqhtKCHbC5EiP+2tmv2EcawcxNV+MBU0jBraHr3+ByYfhBgHlmx71jfIbTtAXinUNBbaliIsxGdwG5nYmE5a4qEqr1gxY9Jn8gwaU9OAPDGroSqAWOpBmfP+PFE0wXXcHR/xgPzLYrSNM2mSgNCmoUTEzBAuG1w5l
+            login.eng.ucsd.edu ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHowpW2uxWF6eXPIUXDkZ0G0m9x4YjbKzJcBrHRchPxipZ2/AzY8hXP51x8jaI7UiC2S4cm8KeOVhFQglbGvvMg=
+            login.eng.ucsd.edu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0+CUXzCgLQpRBcC6IgQDSb9GbyXNc2h0UbcESnz6K2
+        run: |
+          echo "$ID_SSH_KEY" > ~/id_rsa
+          echo "$KNOWN_HOSTS" > ~/known_hosts
+          chmod 600 ~/id_rsa
+          scp -o UserKnownHostsFile=~/known_hosts -i ~/id_rsa -r ./* minnes@login.eng.ucsd.edu:~/public_html/
