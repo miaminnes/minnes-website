@@ -2,8 +2,9 @@
 
 This repository:
 * Stores HTML/CSS/images for Mia Minnes' professional homepage
-* Automatically deploys to [https://miaminnes.github.io/minnes-website/](https://miaminnes.github.io/minnes-website/) on commit and push to the repository
-* Can be *manually* deployed to [https://cseweb.ucsd.edu/~minnes](https://cseweb.ucsd.edu/~minnes) by using Actions -> Deploy to cseweb.ucsd.edu/~minnes -> Run Workflow (from main branch)
+* Automatically deploys to [https://miaminnes.github.io/minnes-website/](https://miaminnes.github.io/minnes-website/) and to
+[https://cseweb.ucsd.edu/~minnes](https://cseweb.ucsd.edu/~minnes) 
+on commit and push to the repository
 
 ## Editing
 You can edit the HTML/CSS/images directly through the Github editing interfaces. When you commit/save, you will be able to see your changes reflected in [https://miaminnes.github.io/minnes-website/](https://miaminnes.github.io/minnes-website/) a few minutes later. It's also fine to clone and edit locally and push later, but for quick updates the web interface on Github is particularly convenient, especially if the goal is to just fix up some typos, etc.
