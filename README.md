@@ -21,7 +21,7 @@ The environment variables are set so that files can be copied to the internships
 (without entering the password each time). To set this up, a public/private rsa key pair is needed.
 1. Locally (e.g. in Terminal), run `ssh-keygen` and (when prompted) enter full path for file to save key e.g. `/Users/username/.ssh/id_rsa`  and do not enter a passphrase (so that action can run without user input)
 2. Copy the public key to a line in the `authorized_keys` file in minnes@login.eng.ucsd.edu, e.g. using FTP with the command `put /Users/username/.ssh/id_rsa.pub .ssh/authorized keys`
-3. Store the private key as an Actions secret: navigate to Settings --> Secrets --> Actions and select "New repository secret" and copy the contents of sis_rsa to the secret.  The name of this secret is stored in the Github Action environment variable SIS_SSH_KEY on line 25.
+3. Store the private key as an Actions secret: navigate to Settings --> Secrets --> Actions and select "New repository secret" and copy the contents of id_rsa to the secret.  The name of this secret is stored in the Github Action environment variable SIS_SSH_KEY on line 25.
 4. Locally (e.g. in Terminal), generate the key signatures of the login.eng.ucsd.edu host by running `ssh-keyscan login.eng.ucsd.edu`. The non-commented lines that are printed by this command are stored in the Github Action environment variable KNOWN_HOSTS on lines 27-29.
 5. The Github Action runs by copying the private key to a file in the repo (line 31), copying the signatures of the host (line 33), setting permissions to use the private key (line 33), and then using `scp` to copy all the files for the website using the private key to authenticate (line 34).
 
