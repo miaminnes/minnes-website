@@ -1077,7 +1077,7 @@ th {
           box-sizing: border-box;
 }
 html {
-  font-size: 10px;
+  font-size: 12px;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -1491,7 +1491,7 @@ blockquote .small {
   display: block;
   font-size: 80%;
   line-height: 1.42857143;
-  color: #777;
+  color: #FFF;
 }
 blockquote footer:before,
 blockquote small:before,
@@ -4497,11 +4497,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  /*color: #777;*/
+  color: #FFF;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  /*color: #5e5e5e;*/
+  color: #FFF;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
