@@ -25,5 +25,9 @@ The environment variables are set so that files can be copied to the internships
 4. Locally (e.g. in Terminal), generate the key signatures of the login.eng.ucsd.edu host by running `ssh-keyscan login.eng.ucsd.edu`. The non-commented lines that are printed by this command are stored in the Github Action environment variable KNOWN_HOSTS on lines 27-29.
 5. The Github Action runs by copying the private key to a file in the repo (line 31), copying the signatures of the host (line 33), setting permissions to use the private key (line 33), and then using `scp` to copy all the files for the website using the private key to authenticate (line 34).
 
-To deploy, use the Actions interface, selecting `Deploy to loging.eng.ucsd.edu` and clicking the button `Run workflow`, `Use workflow from Branch: main`, `Run workflow`.
+To deploy, use the Actions interface, selecting `Deploy to login.eng.ucsd.edu` and clicking the button `Run workflow`, `Use workflow from Branch: main`, `Run workflow`.
 
+**1/30/2025 Update from OEC** Use
+ssh minnes@mywebsite.eng.ucsd.edu
+(from a campus network or VPN)
+NOT for cseweb websites (potentially true for pace, internship symposium, etc.)
